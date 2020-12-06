@@ -18,25 +18,24 @@ using namespace std;
 GLfloat WHITE[] = { 1, 1, 1 };    //白色
 GLfloat RED[] = { 1, 0, 0 };    //红色
 GLfloat GREEN[] = { 0, 1, 0 };    //绿色
-GLfloat MAGENTA[] = { 1, 0, 1 };  //洋红
 
-int x11 = 0;
-int x22 = 0;
-int y11 = 0;
-int y22 = 0;
-
+//鼠标点击界面前后的时间
 clock_t time1;
 clock_t time2;
 
+//鼠标刚好按下时在界面上的坐标
 double mouseX1;
 double mouseY1;
 
+//鼠标松开时在界面上的坐标
 double mouseX2;
 double mouseY2;
 
+//鼠标移动的速度
 double mouseVX;
 double mouseVY;
 
+//判断用户是否点击了屏幕
 int flag = 0;
 
 //小球中心点位置（全局变量）
@@ -68,10 +67,10 @@ public:
 //用lame bouncing algorithm
 //每帧上下移动0.05单位
 
+//相机初始位置
 float gx = 0;
 float gy = 3;
 float gz = 0;
-
 
 class Ball {
 	//类的属性
@@ -135,6 +134,7 @@ public:
 	{
 		direction = direct;
 	}
+
 	//更新和绘制方法
 	void update() {
 		//正反运动
@@ -155,9 +155,11 @@ public:
 			vx = vx * 0.85;
 		}
 
-		//cout << "x = " << x << endl;
-		//cout << "y = " << y << endl;
-		//cout << "z = " << z << endl;
+		if (sqrt(vx * vx + vy * vy) < sqrt(mouseVX * mouseVX + mouseVY * mouseVY)/100)
+		{
+			vx = 0;
+			vy = 0;
+		}
 
 		glPushMatrix();
 		//单独设置每个球的材质参数
@@ -229,6 +231,7 @@ Checkerboard checkerboard(100, 100);
 Camera camera;
 //创建3个小球的数组
 
+//小球的初始坐标
 double initBallH = 8;
 double initBallX = 5;
 double initBallZ = 15;
@@ -315,9 +318,7 @@ void display() {
 				glVertex3f(centerList[i][0], centerList[i][1], centerList[i][2]);
 			}
 			glEnd();
-
 		}
-
 	}
 	glutSwapBuffers();
 }

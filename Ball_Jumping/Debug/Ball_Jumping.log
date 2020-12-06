@@ -1,3 +1,3 @@
 ﻿  main.cpp
-C:\Users\10171\Desktop\Ball_Jumping\Ball_Jumping\main.cpp(312,22): warning C4018: “<”: 有符号/无符号不匹配
-  Ball_Jumping.vcxproj -> C:\Users\10171\Desktop\Ball_Jumping\Debug\Ball_Jumping.exe
+C:\Users\10171\Desktop\软件技术基础\Ball_Bouncing\Ball_Jumping\main.cpp(315,22): warning C4018: “<”: 有符号/无符号不匹配
+  Ball_Jumping.vcxproj -> C:\Users\10171\Desktop\软件技术基础\Ball_Bouncing\Debug\Ball_Jumping.exe
